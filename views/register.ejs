@@ -1,0 +1,36 @@
+<!-- views/register.ejs -->
+<%- include('partials/header', { user: null }) %>
+
+<h2>Register</h2>
+
+<% if (errors.length > 0) { %>
+    <ul class="errors">
+        <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>
+
+<form action="/register" method="POST">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= typeof name !== 'undefined' ? name : '' %>" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="<%= typeof email !== 'undefined' ? email : '' %>" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" required>
+    </div>
+    <button type="submit">Register</button>
+</form>
+
+<p>Already have an account? <a href="/login">Login here</a>.</p>
+
+<%- include('partials/footer') %>

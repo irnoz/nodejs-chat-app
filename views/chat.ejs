@@ -1,0 +1,22 @@
+<!-- views/chat.ejs -->
+<%- include('partials/header', { user: user }) %>
+
+<h2>Chat Room</h2>
+
+<div id="messages">
+    <% messages.forEach(message => { %>
+        <div class="message">
+            <strong><%= message.user.name %>:</strong> <%= message.content %>
+        </div>
+    <% }) %>
+</div>
+
+<form id="chat-form">
+    <input id="message-input" autocomplete="off" placeholder="Type your message here..." required />
+    <button type="submit">Send</button>
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+
+<%- include('partials/footer') %>
